@@ -118,7 +118,7 @@ const subjects = {
     name: "English 2nd Paper",
     chapters: [
       { title: "Articles", link: "https://youtu.be/4n3SKm3FTms?si=sGMZD7YxzRw5mx-9" },
-      { title: "Preposition", link: "https://www.youtube.com/live/kTkKO-FJcx4?si=5Wssx9udRgKvN4tc" },
+      { title: "Preposition", link: "https://www.youtube.com/watch?v=kTkKO-FJcx4&t=880s" },
       { title: "Clauses and Phrase", link: "https://youtu.be/iwo3-qJf5LA?si=D7mdvdNoljU4DnYY" },
       { title: "Right Forms of Verbs", link: "https://youtu.be/fxbq1WdmHP0?si=2twNokLp1N-sTsoN" },
       { title: "Right Forms of Verbs-2", link: "https://www.youtube.com/live/PBa4jIdGGRw?si=McrTMbKr0HbQn41k" },
