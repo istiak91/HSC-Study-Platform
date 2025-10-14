@@ -167,7 +167,7 @@ function showSubject(key) {
 
   const list = document.getElementById("chapter-list");
   list.innerHTML = "";
-  subjects[key].chapters.forEach((ch, index) => {
+  subjects[key].chapters.forEach((ch) => {
     list.innerHTML += `
       <div class="chapter">
         <button onclick="openVideo('${ch.link}')">${ch.title}</button>
@@ -180,7 +180,11 @@ function openVideo(link) {
   const embedLink = convertYouTubeLink(link);
   const player = document.getElementById("yt-player");
   const frame = document.getElementById("video-frame");
-  player.src = embedLink;
+
+  player.src = embedLink + "&autoplay=1";
+  player.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture";
+  player.allowFullscreen = true;
+
   frame.classList.remove("hidden");
   window.scrollTo({ top: frame.offsetTop, behavior: "smooth" });
 }
