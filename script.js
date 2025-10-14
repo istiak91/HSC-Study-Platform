@@ -133,7 +133,7 @@ const subjects = {
   },
 
   ict: {
-    name: "Higher Math 2nd Paper (উচ্চতর গণিত ২য় পত্র)",
+    name: "ICT",
     chapters: [
       { title: "অধ্যায় ২: কমিউনিকেশন সিস্টেমস ও নেটওয়ার্কিং", link: "https://youtu.be/9kLNeT-MTNw?si=GDARZIJhhfMXQqtd" },
       { title: "অধ্যায় ৩: সংখ্যা পদ্ধতি ও ডিজিটাল ডিভাইস", link: "https://youtube.com/playlist?list=PLxSt9YDBipm6RQTubQ2BAQVSgoRaHkLB6&si=e3Va6FmH26gUXiSx" },
