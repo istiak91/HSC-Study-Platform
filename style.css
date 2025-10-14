@@ -1,0 +1,144 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  background: linear-gradient(135deg, #f8fbff, #eef3f8);
+  color: #333;
+  text-align: center;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+header {
+  background: linear-gradient(90deg, #0078d7, #0096ff);
+  color: white;
+  padding: 30px 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+header h1 {
+  font-size: 28px;
+  margin-bottom: 8px;
+}
+
+header p {
+  font-size: 16px;
+  opacity: 0.9;
+}
+
+.subject-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 30px 10px;
+  gap: 15px;
+}
+
+.subject-card {
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  padding: 25px 40px;
+  font-size: 18px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.subject-card:hover {
+  background: #0078d7;
+  color: white;
+  transform: scale(1.05);
+  box-shadow: 0 6px 15px rgba(0,120,215,0.3);
+}
+
+#chapter-section {
+  padding: 20px;
+  animation: fadeIn 0.5s ease;
+}
+
+#subject-title {
+  font-size: 24px;
+  color: #0078d7;
+  margin-bottom: 20px;
+}
+
+.chapter {
+  background: white;
+  border-radius: 12px;
+  margin: 10px auto;
+  width: 90%;
+  padding: 12px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+  transition: all 0.2s;
+}
+
+.chapter:hover {
+  background: #e9f3ff;
+}
+
+.chapter button {
+  background: none;
+  border: none;
+  color: #0078d7;
+  font-size: 17px;
+  cursor: pointer;
+}
+
+#video-frame {
+  margin-top: 20px;
+}
+
+#yt-player {
+  width: 90%;
+  height: 450px;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+.back-btn {
+  margin: 30px auto;
+  background: #0078d7;
+  color: white;
+  border: none;
+  padding: 10px 25px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: 0.3s;
+}
+
+.back-btn:hover {
+  background: #005fa3;
+}
+
+footer {
+  margin-top: auto;
+  background: #f0f4f9;
+  padding: 15px;
+  font-size: 14px;
+}
+
+footer a {
+  color: #0078d7;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.hidden {
+  display: none;
+}

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HSC 2027 Study Hub</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header>
+    <h1>HSC 2027 Study Hub (Bangla Version)</h1>
+    <p>Those who Strive, Allah Guides Their Way!</p>
+  </header>
+
+  <main>
+    <h2>Select a Subject</h2>
+    <div class="subject-container">
+      <div class="subject-card" onclick="showSubject('phy1')">Physics 1st Paper</div>
+      <div class="subject-card" onclick="showSubject('phy2')">Physics 2nd Paper</div>
+      <div class="subject-card" onclick="showSubject('chem1')">Chemistry 1st Paper</div>
+      <div class="subject-card" onclick="showSubject('chem2')">Chemistry 2nd Paper</div>
+      <div class="subject-card" onclick="showSubject('bio1')">Biology 1st Paper</div>
+      <div class="subject-card" onclick="showSubject('bio2')">Biology 2nd Paper</div>
+      <div class="subject-card" onclick="showSubject('math1')">Higher Math 1st Paper</div>
+      <div class="subject-card" onclick="showSubject('math2')">Higher Math 2nd Paper</div>
+      <div class="subject-card" onclick="showSubject('eng2')">English 2nd Paper</div>
+      <div class="subject-card" onclick="showSubject('ict')">ICT</div>
+    </div>
+
+    <section id="chapter-section" class="hidden">
+      <h2 id="subject-title"></h2>
+      <div id="chapter-list"></div>
+      <div id="video-frame" class="hidden">
+        <iframe id="yt-player" frameborder="0" allowfullscreen></iframe>
+      </div>
+      <button class="back-btn" onclick="goBack()">⬅ Back</button>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2025 HSC 2027 Study Hub | Created by 
+      <a href="https://www.linkedin.com/in/istiakhossain91/" target="_blank">Istiak Hossain</a>
+    </p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
