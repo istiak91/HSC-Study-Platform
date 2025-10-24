@@ -142,3 +142,52 @@ footer a:hover {
 .hidden {
   display: none;
 }
+
+.progress-container {
+  width: 90%;
+  margin: 10px auto 25px;
+  background: #e6eef7;
+  border-radius: 12px;
+  height: 22px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 120, 215, 0.15);
+}
+
+.progress-bar {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, #00b09b, #96c93d);
+  border-radius: 12px;
+  transition: width 0.6s ease-in-out;
+}
+
+#progress-text {
+  font-size: 15px;
+  color: #0078d7;
+  margin-top: 6px;
+  font-weight: 500;
+}
+
+
+.chapter.read {
+  background: #e8fff2;
+  border: 2px solid #32cd32;
+  box-shadow: 0 4px 12px rgba(50, 205, 50, 0.2);
+}
+
+.mark-btn {
+  background: #0078d7;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 6px 14px;
+  font-size: 14px;
+  margin-left: 10px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.mark-btn:hover {
+  background: #005fa3;
+}
