@@ -167,14 +167,24 @@ function showSubject(key) {
 
   const list = document.getElementById("chapter-list");
   list.innerHTML = "";
+
+  const readChapters = JSON.parse(localStorage.getItem(`read_${key}`)) || [];
+
   subjects[key].chapters.forEach((ch, index) => {
+    const isRead = readChapters.includes(index);
     list.innerHTML += `
-      <div class="chapter">
+      <div class="chapter ${isRead ? "read" : ""}" id="chapter-${index}">
         <button onclick="openVideo('${ch.link}')">${ch.title}</button>
+        <button class="mark-btn" onclick="markAsRead('${key}', ${index})">
+          ${isRead ? "✓ Read" : "Mark as Read"}
+        </button>
       </div>
     `;
   });
+
+  updateProgress(key);
 }
+
 
 function openVideo(link) {
   const embedLink = convertYouTubeLink(link);
@@ -191,3 +201,32 @@ function goBack() {
   document.getElementById("video-frame").classList.add("hidden");
   document.getElementById("yt-player").src = "";
 }
+
+function markAsRead(subjectKey, index) {
+  let readChapters = JSON.parse(localStorage.getItem(`read_${subjectKey}`)) || [];
+  if (!readChapters.includes(index)) {
+    readChapters.push(index);
+    localStorage.setItem(`read_${subjectKey}`, JSON.stringify(readChapters));
+    document.getElementById(`chapter-${index}`).classList.add("read");
+    document.querySelector(`#chapter-${index} .mark-btn`).innerText = "✓ Read";
+  } else {
+    readChapters = readChapters.filter(i => i !== index);
+    localStorage.setItem(`read_${subjectKey}`, JSON.stringify(readChapters));
+    document.getElementById(`chapter-${index}`).classList.remove("read");
+    document.querySelector(`#chapter-${index} .mark-btn`).innerText = "Mark as Read";
+  }
+  updateProgress(subjectKey);
+}
+
+function updateProgress(subjectKey) {
+  const total = subjects[subjectKey].chapters.length;
+  const readChapters = JSON.parse(localStorage.getItem(`read_${subjectKey}`)) || [];
+  const percent = Math.round((readChapters.length / total) * 100);
+
+  const bar = document.getElementById("progress-bar");
+  const text = document.getElementById("progress-text");
+
+  bar.style.width = percent + "%";
+  text.textContent = `Progress: ${percent}%`;
+}
+
