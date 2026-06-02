@@ -2,54 +2,36 @@
 <html lang="bn">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
   <title>HSC 2027 Study Hub | বাংলা ভার্সন</title>
   <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
-
-<header>
-  <h1>📚 HSC 2027 Study Hub (বাংলা ভার্সন)</h1>
-  <p>✨ যারা চেষ্টা করে, আল্লাহ তাদের পথ দেখান ✨</p>
-</header>
-
-<main>
-  <h2 style="font-weight: 500; color:#2c6979;">📖 বিষয় নির্বাচন করুন</h2>
-
-  <div class="progress-container">
-    <div class="progress-bar" id="progress-bar"></div>
-  </div>
-  <p id="progress-text">📊 অগ্রগতি: 0%</p>
-
-  <div class="subject-container" id="subject-container">
-    <div class="subject-card" data-subj="phy1">⚛️ পদার্থবিজ্ঞান ১ম পত্র</div>
-    <div class="subject-card" data-subj="phy2">⚛️ পদার্থবিজ্ঞান ২য় পত্র</div>
-    <div class="subject-card" data-subj="chem1">🧪 রসায়ন ১ম পত্র</div>
-    <div class="subject-card" data-subj="chem2">🧪 রসায়ন ২য় পত্র</div>
-    <div class="subject-card" data-subj="bio1">🧬 জীববিজ্ঞান ১ম পত্র</div>
-    <div class="subject-card" data-subj="bio2">🧬 জীববিজ্ঞান ২য় পত্র</div>
-    <div class="subject-card" data-subj="math1">📐 উচ্চতর গণিত ১ম পত্র</div>
-    <div class="subject-card" data-subj="math2">📐 উচ্চতর গণিত ২য় পত্র</div>
-    <div class="subject-card" data-subj="eng2">📖 ইংরেজি ২য় পত্র</div>
-    <div class="subject-card" data-subj="ict">💻 তথ্য ও যোগাযোগ প্রযুক্তি</div>
-  </div>
-
-  <section id="chapter-section" class="hidden">
-    <h2 id="subject-title"></h2>
-    <div id="chapter-list"></div>
-    <div id="video-frame" class="hidden">
-      <iframe id="yt-player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  <div id="appContainer" class="app-container">
+    <div class="dashboard-header">
+      <div class="logo-area">
+        <h1><i class="fas fa-graduation-cap"></i> HSC 2027 Study Hub</h1>
+        <span>বাংলা ভার্সন | যারা চেষ্টা করে, আল্লাহ তাদের পথ দেখান</span>
+      </div>
     </div>
-    <button class="back-btn" id="nav-back-btn">🔙 ফিরে যান</button>
-  </section>
-</main>
 
-<footer>
-  <p>© 2025 HSC 2027 Study Hub | নির্মাতা 
-    <a href="https://www.linkedin.com/in/istiakhossain91/" target="_blank">ইস্তিয়াক হোসেন</a>
-  </p>
-</footer>
+    <!-- Global Progress Bar (appears when a subject is selected) -->
+    <div id="globalProgress" class="progress-container" style="display: none;">
+      <div class="progress-bar" id="progress-bar"></div>
+      <p id="progress-text">📊 অগ্রগতি: 0%</p>
+    </div>
 
-<script src="script.js"></script>
+    <!-- Main Dashboard (Subject Cards) -->
+    <div id="dashboardMain">
+      <div class="options-grid" id="subjectsGrid"></div>
+    </div>
+
+    <!-- Dynamic Content Area (chapters, video player) -->
+    <div id="contentArea" class="section-view"></div>
+  </div>
+
+  <script src="script.js"></script>
 </body>
 </html>
