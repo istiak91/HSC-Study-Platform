@@ -1,5 +1,10 @@
+// ------------------------------------------------------------------
+// HSC STUDY HUB - COMPLETE DATA & LOGIC
+// Back button support (Windows/Mobile), YouTube embed fix, auto-scroll
+// ------------------------------------------------------------------
+
 const subjects = {
-  phy1: { name: "⚛️ Physics 1st Paper (পদার্থবিজ্ঞান ১ম পত্র)", chapters: [
+  phy1: { name: "⚛️ পদার্থবিজ্ঞান ১ম পত্র", icon: "fas fa-atom", chapters: [
     { title: "Chapter 1: ভৌতজগৎ ও পরিমাপ", link: "https://youtube.com/playlist?list=PLHIUH80VdpAr2K-M2YTpEg5TQupvxeGa1&si=TVz0cb6HyrcxDLD5" },
     { title: "Chapter 2: ভেক্টর", link: "https://youtube.com/playlist?list=PLctDpDSJddXIxrVvwoRzwOCbWeHgkfPWk&si=pdCTJmzlSX6JSUTX" },
     { title: "Chapter 3: গতিবিদ্যা", link: "https://youtube.com/playlist?list=PLxSt9YDBipm7Okm3wCd4hrRCofjxVEeSr&si=lroS4mzB0zfu7Amt" },
@@ -11,7 +16,7 @@ const subjects = {
     { title: "Chapter 9: তরঙ্গ", link: "https://youtube.com/playlist?list=PLaK_mCiMGdJ1taCsxIyZkMIICJvmH2DBX&si=eREa7iwiO2F-Tksv" },
     { title: "Chapter 10: আদর্শ গ্যাস ও গ্যাসের গতিতত্ত্ব", link: "https://youtube.com/playlist?list=PLgiRmHToIpRfqd6pGH_rgUWve6zhwyeTd&si=hdGekZ-5ZlF7CiWL" }
   ] },
-  phy2: { name: "⚛️ Physics 2nd Paper (পদার্থবিজ্ঞান ২য় পত্র)", chapters: [
+  phy2: { name: "⚛️ পদার্থবিজ্ঞান ২য় পত্র", icon: "fas fa-atom", chapters: [
     { title: "প্রথম অধ্যায়: তাপগতিবিদ্যা", link: "https://youtube.com/playlist?list=PLctDpDSJddXKONKKoK_TsEhFjs9C_10Ji&si=ODtFwxhcibnP8g8B" },
     { title: "দ্বিতীয় অধ্যায়: স্থির তড়িৎ", link: "https://youtube.com/playlist?list=PLaK_mCiMGdJ1Q9OHGVXpzkCNSWZEdzstk&si=Uc8f8bAJ0Sx7eqnq" },
     { title: "তৃতীয় অধ্যায়: চল তড়িৎ", link: "https://youtube.com/playlist?list=PLctDpDSJddXII8JUfN9swllVPTAivdnHU&si=dl7RiomG9U2mzIm5" },
@@ -24,20 +29,20 @@ const subjects = {
     { title: "দশম অধ্যায়: সেমিকন্ডাকটর ও ইলেকট্রনিকস", link: "https://youtube.com/playlist?list=PLEQG3WKXdD3dWw4UmfJtfYP2zVsEeBVYI&si=3yfozlALE7-79WBr" },
     { title: "একাদশ অধ্যায়: জ্যোতির্বিজ্ঞান", link: "https://youtube.com/playlist?list=PLxSt9YDBipm4Ipenex0zPdVI-Gic4Nx34&si=KPrITHPc9bA-iS_Y" }
   ] },
-  chem1: { name: "🧪 Chemistry 1st Paper (রসায়ন ১ম পত্র)", chapters: [
+  chem1: { name: "🧪 রসায়ন ১ম পত্র", icon: "fas fa-flask", chapters: [
     { title: "দ্বিতীয় অধ্যায়: গুণগত রসায়ন", link: "https://youtube.com/playlist?list=PLxSt9YDBipm7kClgPBo-zO25WqHiarBwZ&si=HcAcSTXvp8E-ns2Q" },
     { title: "তৃতীয় অধ্যায়: মৌলের পর্যায়বৃত্ত ধর্ম ও রাসায়নিক বন্ধন", link: "https://youtube.com/playlist?list=PLxSt9YDBipm6KoCk_D7J2r6UjwkYanZxQ&si=QApjCkpnVnx1Y5cy" },
     { title: "চতুর্থ অধ্যায়: রাসায়নিক পরিবর্তন", link: "https://youtube.com/playlist?list=PL2MAu5P_yY9vVBXJuoAm4CTXzZGKZ8Yba&si=JadvRwRtYhBU3B_8" },
     { title: "পঞ্চম অধ্যায়: কর্মমুখী রসায়ন", link: "https://youtu.be/jRT3nJSi2XA?si=T_x7idRsNISE9K9l" }
   ] },
-  chem2: { name: "🧪 Chemistry 2nd Paper (রসায়ন ২য় পত্র)", chapters: [
+  chem2: { name: "🧪 রসায়ন ২য় পত্র", icon: "fas fa-flask", chapters: [
     { title: "প্রথম অধ্যায়: পরিবেশ রসায়ন", link: "https://youtube.com/playlist?list=PL1GVU-Q4Oos4OHtGpigYb_qGiqOr5fwVD&si=0pmLwlCNRV9uyvCA" },
     { title: "দ্বিতীয় অধ্যায়: জৈব রসায়ন", link: "https://youtube.com/playlist?list=PLwSv-teaUzyHvUihLJHsToSQUtpzOiuGs&si=7lezC5etoywk4Lvj" },
     { title: "তৃতীয় অধ্যায়: পরিমাণগত রসায়ন", link: "https://youtube.com/playlist?list=PLwSv-teaUzyFEfR4U7uMWZRTfdOtsLUoB&si=a3uJIL0vhgd5Ux8m" },
     { title: "চতুর্থ অধ্যায়: তড়িৎ রাসায়ন", link: "https://youtu.be/lJoeZDLsU64?si=uys63mcK8BDjk7KB" },
     { title: "পঞ্চম অধ্যায়: অর্থনৈতিক রসায়ন", link: "https://youtube.com/playlist?list=PLxSt9YDBipm5kTdyXvMk7HgRooRIFkg0j&si=fKNdEO8AcU8lD341" }
   ] },
-  bio1: { name: "🧬 Biology 1st Paper (জীববিজ্ঞান ১ম পত্র)", chapters: [
+  bio1: { name: "🧬 জীববিজ্ঞান ১ম পত্র", icon: "fas fa-dna", chapters: [
     { title: "Chapter 1: কোষ ও এর গঠন", link: "https://youtube.com/playlist?list=PLBIUjjCw0wBJi4ydjzjiE6NdwgyVMIKLk&si=tD3DtCXw4pf3A6Wr" },
     { title: "Chapter 2: কোষ বিভাজন", link: "https://youtube.com/playlist?list=PLCsQ0bReSVTi0lTN07gd6TzOGF0V5Uk-V&si=rYU6TLuwJn4XJX3P" },
     { title: "Chapter 3: কোষ রসায়ন", link: "https://youtube.com/playlist?list=PLH5tmLzPkkeCQ6iCzg3sVdvr_KTTYU_HC&si=gmjwFy4F6OOvyx0T" },
@@ -51,7 +56,7 @@ const subjects = {
     { title: "Chapter 11: জীবপ্রযুক্তি", link: "https://youtube.com/playlist?list=PL8Iny1AZ3bHbzCKOQfb6ho7JHT_G9Jpy1&si=Pp4pQDvM7GKFgm52" },
     { title: "Chapter 12: জীবের পরিবেশ বিস্তার ও সংরক্ষণ", link: "https://youtu.be/0IWLMx41nGc?si=jO2ONrxMrVDkDyvS" }
   ] },
-  bio2: { name: "🧬 Biology 2nd Paper (জীববিজ্ঞান ২য় পত্র)", chapters: [
+  bio2: { name: "🧬 জীববিজ্ঞান ২য় পত্র", icon: "fas fa-dna", chapters: [
     { title: "Chapter 1: প্রাণীর বিভিন্নতা ও শ্রেণিবিন্যাস", link: "https://youtube.com/playlist?list=PL3fBB5-oEa1zaOkfBlRvRmZPiimHbRJ6B&si=26gswaNIVQY4S8yj" },
     { title: "Chapter 2: প্রাণীর পরিচিতি", link: "https://youtube.com/playlist?list=PLcJGjF8QBSfTCnp1ORS4LyOpfyRm5p7Sy&si=KvCjQamlHlDtvPse" },
     { title: "Chapter 3: পরিপাক ও শোষণ", link: "https://youtu.be/XZjmBNlFpiY?si=JPRHW9CnJGqDXNjD" },
@@ -65,31 +70,51 @@ const subjects = {
     { title: "Chapter 11: জিনতত্ত্ব ও বিবর্তন", link: "https://youtu.be/CW25exsk6bk?si=BEHnLF4IM1JmewFx" },
     { title: "Chapter 12: প্রাণীর আচরণ", link: "https://youtube.com/playlist?list=PLn5NEUynyVcPxbXmhZ_-2OQ65ZDT2FEIW&si=fTCXrN6_hffUrqrB" }
   ] },
-  math1: { name: "📐 Higher Math 1st Paper (উচ্চতর গণিত ১ম পত্র)", chapters: [
+  math1: { name: "📐 উচ্চতর গণিত ১ম পত্র", icon: "fas fa-square-root-alt", chapters: [
     { title: "Chapter 1: ম্যাট্রিক্স ও নির্ণায়ক", link: "https://youtube.com/playlist?list=PLBIUjjCw0wBICsUln-79ybLqTPE0TNV7F&si=Cga0eIDZAlCdDjGB" },
     { title: "Chapter 2: ভেক্টর", link: "https://youtube.com/playlist?list=PLXVDhFlxdHuHACxYvGAUxFUz_OELOmBUn&si=9vKZGMMH3Yu971PS" },
-    { title: "Chapter 3: সরলরেখা", link: "https://youtube.com/playlist?list=PL4XrhAetwHqEg4CmE2jRO9lUCT-Y6cvvp&si=VUadCDUe1xDNvdr5" }
+    { title: "Chapter 3: সরলরেখা", link: "https://youtube.com/playlist?list=PL4XrhAetwHqEg4CmE2jRO9lUCT-Y6cvvp&si=VUadCDUe1xDNvdr5" },
+    { title: "Chapter 4: বৃত্ত", link: "https://www.youtube.com/playlist?list=PL4XrhAetwHqFKt8jM-BcWl1fDbAcDYBBj" },
+    { title: "Chapter 5: বিন্যাস ও সমাবেশ", link: "https://youtube.com/playlist?list=PLTSVnOmytu8720IV29o4PZJUMpzjaU3c2&si=WBAVONL4UQ2stvDK" },
+    { title: "Chapter 6: ত্রিকোণমিতিক অনুপাত", link: "https://youtube.com/playlist?list=PLinnkrP6VC2Kxe4YbeQeZjewqOjvzLahF&si=peCO5Pd33m9bzho9" },
+    { title: "Chapter 7: সংযুক্ত কোণের ত্রিকোণমিতিক অনুপাত", link: "https://www.youtube.com/playlist?list=PLBIUjjCw0wBKKeYVjsVLYXYOz59Fjx7os" },
+    { title: "Chapter 8: ফাংশন ও ফাংশনের লেখচিত্র", link: "https://youtube.com/playlist?list=PLBIUjjCw0wBJ0mVRQ39Xn5LIjW_tWoUTR&si=BIRNLDuV-BHJouRB" },
+    { title: "Chapter 9: অন্তরীকরণ", link: "https://www.youtube.com/playlist?list=PL4XrhAetwHqGQm0nWooXdj3OwykPsl_ul" },
+    { title: "Chapter 10: যোগজীকরণ", link: "https://www.youtube.com/playlist?list=PLBIUjjCw0wBLIsv-Gwpl7CA7DEPnLz1e3" }
   ] },
-  math2: { name: "📐 Higher Math 2nd Paper (উচ্চতর গণিত ২য় পত্র)", chapters: [
+  math2: { name: "📐 উচ্চতর গণিত ২য় পত্র", icon: "fas fa-square-root-alt", chapters: [
     { title: "Chapter 1: বাস্তব সংখ্যা ও অসমতা", link: "https://www.youtube.com/playlist?list=PLbmVV5PCaiWYs47F4eE2nc9tO2oGiW4Fm" },
-    { title: "Chapter 2: যোগাশ্রয়ী প্রোগ্রাম", link: "https://www.youtube.com/playlist?list=PLbmVV5PCaiWawQZOFczqcujp35nlu66vM" }
+    { title: "Chapter 2: যোগাশ্রয়ী প্রোগ্রাম", link: "https://www.youtube.com/playlist?list=PLbmVV5PCaiWawQZOFczqcujp35nlu66vM" },
+    { title: "Chapter 3: জটিল সংখ্যা", link: "https://www.youtube.com/playlist?list=PLBIUjjCw0wBJ-8aYGkfb6BMmkfXwK4Vmz" },
+    { title: "Chapter 4: বহুপদী ও বহুপদী সমীকরণ", link: "https://youtube.com/playlist?list=PL4XrhAetwHqGq3JckuI5VpsqPxJNX_Rba&si=UFf4D6B975muylh7" },
+    { title: "Chapter 5: দ্বিপদী বিস্তৃতি", link: "https://www.youtube.com/playlist?list=PLTSVnOmytu86Sifvf0wHTvCjcRSE27yq4" },
+    { title: "Chapter 6: কনিক", link: "https://www.youtube.com/playlist?list=PL4XrhAetwHqHkLYAeN5UVXPhEjULsro4x" },
+    { title: "Chapter 7: বিপরীত ত্রিকোণমিতিক ফাংশন ও ত্রিকোণমিতিক সমীকরণ", link: "https://www.youtube.com/playlist?list=PLsaQk_omd3fIUdI2yhXi1nw2IOkcsszp5" },
+    { title: "Chapter 8: স্থিতিবিদ্যা ", link: "https://youtube.com/playlist?list=PL4XrhAetwHqGN9r3yicJ0cl7Ufnml9e2j&si=nY-hd5xt8L-4FfdW" },
+    { title: "Chapter 9: সমতলে বস্তুকণার গতি", link: "https://www.youtube.com/playlist?list=PL4XrhAetwHqHs3tCStMlF7Ln1dCbQKD-j" },
+    { title: "Chapter 10: বিস্তার পরিমাপ ও সম্ভাবনা", link: "https://www.youtube.com/playlist?list=PLTSVnOmytu85zY8rUt3xcMhtxlIGQocEm" }
   ] },
-  eng2: { name: "📖 English 2nd Paper", chapters: [
+  eng2: { name: "📖 ইংরেজি ২য় পত্র", icon: "fas fa-language", chapters: [
     { title: "Articles", link: "https://youtu.be/4n3SKm3FTms?si=sGMZD7YxzRw5mx-9" },
     { title: "Preposition", link: "https://www.youtube.com/watch?v=kTkKO-FJcx4&t=880s" },
     { title: "Clauses and Phrase", link: "https://youtu.be/iwo3-qJf5LA?si=D7mdvdNoljU4DnYY" },
     { title: "Right Forms of Verbs", link: "https://youtu.be/fxbq1WdmHP0?si=2twNokLp1N-sTsoN" },
-    { title: "Right Forms of Verbs-2 (LIVE)", link: "https://www.youtube.com/live/PBa4jIdGGRw?si=McrTMbKr0HbQn41k" },
-    { title: "Changing Sentences", link: "https://youtube.com/playlist?list=PL7cXE6nk3Ep3_BLgrVF-JUrH4rt941mDV&si=WqF2TfJ-Uw5aytPb" }
+    { title: "Changing Sentences", link: "https://youtube.com/playlist?list=PL7cXE6nk3Ep3_BLgrVF-JUrH4rt941mDV&si=WqF2TfJ-Uw5aytPb" },
+    { title: "Narration", link: "https://youtube.com/playlist?list=PL7cXE6nk3Ep3KnvpaBglnYElX2LuNWeWQ&si=bfNT2oTIIIabJ5NC" },
+    { title: "Pronoun Referencing", link: "https://youtu.be/TDbGisW4Kno?si=LbMhWIfia3z4CJYG" },
+    { title: "Modifiers", link: "https://youtu.be/Zw3LF1LW40A?si=kH2zOr7CAov9rwpr" },
+    { title: "Sentence Connectors", link: "https://youtu.be/Mn7C1XNgQkc?si=jGRHjECMdkrX-mE6" }
   ] },
-  ict: { name: "💻 ICT (তথ্য ও যোগাযোগ প্রযুক্তি)", chapters: [
+  ict: { name: "💻 তথ্য ও যোগাযোগ প্রযুক্তি", icon: "fas fa-laptop-code", chapters: [
     { title: "অধ্যায় ২: কমিউনিকেশন সিস্টেমস ও নেটওয়ার্কিং", link: "https://youtu.be/9kLNeT-MTNw?si=GDARZIJhhfMXQqtd" },
     { title: "অধ্যায় ৩: সংখ্যা পদ্ধতি ও ডিজিটাল ডিভাইস", link: "https://youtube.com/playlist?list=PLxSt9YDBipm6RQTubQ2BAQVSgoRaHkLB6&si=e3Va6FmH26gUXiSx" },
-    { title: "অধ্যায় ৪: ওয়েব ডিজাইন পরিচিতি", link: "https://youtube.com/playlist?list=PLJJqNbHzTfgY3KGPOV0Tow58UkhCZ4Myj&si=HrOPOh36hg0wdfKU" }
+    { title: "অধ্যায় ৪: ওয়েব ডিজাইন পরিচিতি এবং এইচটিএমএল", link: "https://youtube.com/playlist?list=PLJJqNbHzTfgY3KGPOV0Tow58UkhCZ4Myj&si=HrOPOh36hg0wdfKU" },
+    { title: "অধ্যায় ৫: প্রোগ্রামিং ভাষা", link: "https://youtube.com/playlist?list=PLnZ9KY8JVTgqAQ9BMloGEQHu_99C3hfkn&si=mPFHPotjFZujhQH5" },
+    { title: "অধ্যায় ৬: ডেটাবেস ম্যানেজমেন্ট সিস্টেম", link: "https://youtube.com/playlist?list=PLnZ9KY8JVTgr55B30QW0Bmr4UREZGz_wO&si=GKf8dwXNPxHqBIqc" }
   ] }
 };
 
-// ---------- smart YouTube embed (fixes playlists, videos, shorts, live) ----------
+// ---------- Helper: YouTube embed fix (playlists, videos, shorts, live) ----------
 function getYouTubeEmbedUrl(link) {
   if (!link) return "";
   if (link.includes("playlist?list=")) {
@@ -112,18 +137,15 @@ function getYouTubeEmbedUrl(link) {
   return link;
 }
 
-let currentSubjectKey = null;
-let currentVideoLink = null;
-
 // DOM elements
-const subjectContainer = document.getElementById('subject-container');
-const chapterSection = document.getElementById('chapter-section');
-const subjectTitle = document.getElementById('subject-title');
-const chapterListDiv = document.getElementById('chapter-list');
-const videoFrame = document.getElementById('video-frame');
-const ytPlayer = document.getElementById('yt-player');
+const dashboardMain = document.getElementById('dashboardMain');
+const contentArea = document.getElementById('contentArea');
+const subjectsGrid = document.getElementById('subjectsGrid');
+const globalProgressDiv = document.getElementById('globalProgress');
 const progressBar = document.getElementById('progress-bar');
 const progressText = document.getElementById('progress-text');
+
+let currentSubjectKey = null;
 
 function updateProgressBar(subjectKey) {
   const data = subjects[subjectKey];
@@ -135,40 +157,124 @@ function updateProgressBar(subjectKey) {
   progressText.innerText = `📊 অগ্রগতি: ${percent}%`;
 }
 
-function renderChapters(subjectKey) {
-  const subjectData = subjects[subjectKey];
-  if (!subjectData) return;
-  currentSubjectKey = subjectKey;
-  subjectTitle.innerText = subjectData.name;
-  const readChapters = JSON.parse(localStorage.getItem(`read_${subjectKey}`)) || [];
-  chapterListDiv.innerHTML = "";
-  subjectData.chapters.forEach((ch, idx) => {
-    const isRead = readChapters.includes(idx);
-    const chapDiv = document.createElement('div');
-    chapDiv.className = `chapter ${isRead ? 'read' : ''}`;
-    chapDiv.id = `chapter-${idx}`;
-    chapDiv.innerHTML = `
-      <button class="video-open-btn" data-link="${ch.link.replace(/"/g, '&quot;')}">${escapeHtml(ch.title)}</button>
-      <button class="mark-btn" data-subj="${subjectKey}" data-idx="${idx}">${isRead ? '✓ Read' : 'Mark as Read'}</button>
-    `;
-    chapterListDiv.appendChild(chapDiv);
-  });
-  document.querySelectorAll('.video-open-btn').forEach(btn => {
-    btn.addEventListener('click', (e) => {
-      e.stopPropagation();
-      const rawLink = btn.getAttribute('data-link');
-      openVideoWithHistory(rawLink, subjectKey);
-    });
-  });
-  document.querySelectorAll('.mark-btn').forEach(btn => {
-    btn.addEventListener('click', (e) => {
-      e.stopPropagation();
-      const subj = btn.getAttribute('data-subj');
-      const idx = parseInt(btn.getAttribute('data-idx'));
-      markAsRead(subj, idx);
-    });
-  });
+function toggleReadStatus(subjectKey, chapterIdx) {
+  let readArr = JSON.parse(localStorage.getItem(`read_${subjectKey}`)) || [];
+  if (readArr.includes(chapterIdx)) {
+    readArr = readArr.filter(i => i !== chapterIdx);
+    localStorage.setItem(`read_${subjectKey}`, JSON.stringify(readArr));
+  } else {
+    readArr.push(chapterIdx);
+    localStorage.setItem(`read_${subjectKey}`, JSON.stringify(readArr));
+  }
+  if (currentSubjectKey === subjectKey) {
+    renderTopicsList(subjectKey);
+  }
   updateProgressBar(subjectKey);
+}
+
+function openVideo(subjectKey, chapterIdx, link, title) {
+  history.pushState({ view: 'video', subjectKey, chapterIdx, link, title }, '');
+  renderVideoScreen(subjectKey, chapterIdx, link, title);
+}
+
+function renderVideoScreen(subjectKey, chapterIdx, link, title) {
+  dashboardMain.style.display = 'none';
+  globalProgressDiv.style.display = 'block';
+  updateProgressBar(subjectKey);
+  const subject = subjects[subjectKey];
+  const embedUrl = getYouTubeEmbedUrl(link);
+  const allChapters = subject.chapters.map((ch, idx) => ({ title: ch.title, link: ch.link, idx }));
+  
+  let html = `<button class="back-btn" id="backBtnVideo"><i class="fas fa-arrow-left"></i> Back</button>
+    <div class="video-learning-layout">
+      <div class="video-main">
+        <div id="dynamicPlayerArea"><div class="video-wrapper"><iframe src="${embedUrl}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div></div>
+        <div class="pdf-actions"><button class="pdf-btn" id="backToTopicsBtn"><i class="fas fa-list-ul"></i> Back to Chapters</button></div>
+      </div>
+      <div class="playlist-side">
+        <h4><i class="fas fa-list"></i> Playlist (All Chapters)</h4>
+        <div id="playlistContainer" class="playlist-items"></div>
+      </div>
+    </div>`;
+  contentArea.innerHTML = html;
+  
+  const playlistContainer = document.getElementById('playlistContainer');
+  allChapters.forEach(ch => {
+    const div = document.createElement('div');
+    div.className = `playlist-video ${ch.idx == chapterIdx ? 'active' : ''}`;
+    div.innerHTML = `<div class="video-meta"><h5>${escapeHtml(ch.title)}</h5></div>`;
+    div.addEventListener('click', () => openVideo(subjectKey, ch.idx, ch.link, ch.title));
+    playlistContainer.appendChild(div);
+  });
+  
+  document.getElementById('backBtnVideo').addEventListener('click', () => history.back());
+  document.getElementById('backToTopicsBtn').addEventListener('click', () => {
+    history.pushState({ view: 'topics', subjectKey }, '');
+    renderTopicsList(subjectKey);
+  });
+  setTimeout(() => {
+    document.querySelector('.video-main')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }, 100);
+}
+
+function renderTopicsList(subjectKey) {
+  const subject = subjects[subjectKey];
+  if (!subject) return;
+  currentSubjectKey = subjectKey;
+  dashboardMain.style.display = 'none';
+  globalProgressDiv.style.display = 'block';
+  updateProgressBar(subjectKey);
+  
+  let topicsHtml = `<button class="back-btn" id="backBtnNav"><i class="fas fa-arrow-left"></i> Back to Subjects</button>
+    <h2 style="margin-bottom: 20px;"><i class="${subject.icon}"></i> ${subject.name} · অধ্যায় সমূহ</h2>
+    <div class="topics-list" id="topicsContainer">`;
+  subject.chapters.forEach((ch, idx) => {
+    const isRead = JSON.parse(localStorage.getItem(`read_${subjectKey}`))?.includes(idx) || false;
+    topicsHtml += `<div class="topic-item" data-chapter-index="${idx}" data-chapter-link="${ch.link.replace(/"/g, '&quot;')}" data-chapter-title="${escapeHtml(ch.title)}">
+      <i class="fas ${isRead ? 'fa-check-circle' : 'fa-play-circle'}"></i> ${ch.title}
+      <span class="mark-read-badge" data-idx="${idx}" data-subj="${subjectKey}" style="margin-left:auto; cursor:pointer;"><i class="fas fa-bookmark"></i></span>
+    </div>`;
+  });
+  topicsHtml += `</div>`;
+  contentArea.innerHTML = topicsHtml;
+  
+  document.querySelectorAll('.topic-item').forEach(item => {
+    const chapterIdx = item.getAttribute('data-chapter-index');
+    const link = item.getAttribute('data-chapter-link');
+    const title = item.getAttribute('data-chapter-title');
+    item.addEventListener('click', (e) => {
+      if (e.target.closest('.mark-read-badge')) return;
+      openVideo(subjectKey, parseInt(chapterIdx), link, title);
+    });
+  });
+  document.querySelectorAll('.mark-read-badge').forEach(badge => {
+    badge.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const subj = badge.getAttribute('data-subj');
+      const idx = parseInt(badge.getAttribute('data-idx'));
+      toggleReadStatus(subj, idx);
+    });
+  });
+  const backBtn = document.getElementById('backBtnNav');
+  if (backBtn) backBtn.addEventListener('click', () => history.back());
+}
+
+function renderDashboard() {
+  dashboardMain.style.display = 'block';
+  globalProgressDiv.style.display = 'none';
+  contentArea.innerHTML = '';
+  subjectsGrid.innerHTML = '';
+  for (let [key, sub] of Object.entries(subjects)) {
+    const card = document.createElement('div');
+    card.className = 'option-card';
+    card.setAttribute('data-subj', key);
+    card.innerHTML = `<i class="${sub.icon}"></i><h3>${sub.name}</h3><p>${sub.chapters.length} টি অধ্যায়</p>`;
+    card.addEventListener('click', () => {
+      history.pushState({ view: 'topics', subjectKey: key }, '');
+      renderTopicsList(key);
+    });
+    subjectsGrid.appendChild(card);
+  }
 }
 
 function escapeHtml(str) {
@@ -180,110 +286,19 @@ function escapeHtml(str) {
   });
 }
 
-function markAsRead(subjectKey, index) {
-  let readArr = JSON.parse(localStorage.getItem(`read_${subjectKey}`)) || [];
-  const chapDiv = document.getElementById(`chapter-${index}`);
-  const btn = chapDiv?.querySelector('.mark-btn');
-  if (readArr.includes(index)) {
-    readArr = readArr.filter(i => i !== index);
-    localStorage.setItem(`read_${subjectKey}`, JSON.stringify(readArr));
-    if (chapDiv) chapDiv.classList.remove('read');
-    if (btn) btn.innerText = 'Mark as Read';
-  } else {
-    readArr.push(index);
-    localStorage.setItem(`read_${subjectKey}`, JSON.stringify(readArr));
-    if (chapDiv) chapDiv.classList.add('read');
-    if (btn) btn.innerText = '✓ Read';
-  }
-  if (currentSubjectKey === subjectKey) updateProgressBar(subjectKey);
-}
-
-function closeVideo() {
-  videoFrame.classList.add('hidden');
-  ytPlayer.src = "";
-  currentVideoLink = null;
-}
-
-function openVideoWithHistory(link, subjectKey) {
-  const embedUrl = getYouTubeEmbedUrl(link);
-  ytPlayer.src = embedUrl;
-  videoFrame.classList.remove('hidden');
-  currentVideoLink = link;
-  history.pushState({ view: 'video', subjectKey: subjectKey, videoLink: link }, '', `#video/${subjectKey}`);
-}
-
-function showSubjectUI(subjectKey) {
-  closeVideo();
-  subjectContainer.classList.add('hidden');
-  chapterSection.classList.remove('hidden');
-  renderChapters(subjectKey);
-  history.pushState({ view: 'chapters', subjectKey: subjectKey }, '', `#subject/${subjectKey}`);
-}
-
-function goToSubjectList() {
-  closeVideo();
-  subjectContainer.classList.remove('hidden');
-  chapterSection.classList.add('hidden');
-  currentSubjectKey = null;
-  progressBar.style.width = "0%";
-  progressText.innerText = "📊 অগ্রগতি: 0%";
-  if (window.location.hash) history.pushState({ view: 'subjects' }, '', ' ');
-}
-
-// handle back button (Windows / Mobile)
+// Navigation with History API (Windows / Mobile back button works)
 window.addEventListener('popstate', (event) => {
   const state = event.state;
-  if (!state) {
-    if (!subjectContainer.classList.contains('hidden') && chapterSection.classList.contains('hidden')) return;
-    if (!chapterSection.classList.contains('hidden') && videoFrame.classList.contains('hidden')) {
-      goToSubjectList();
-    } else if (!videoFrame.classList.contains('hidden')) {
-      closeVideo();
-    } else {
-      goToSubjectList();
-    }
-    return;
-  }
-  if (state.view === 'chapters' && state.subjectKey && subjects[state.subjectKey]) {
-    closeVideo();
-    subjectContainer.classList.add('hidden');
-    chapterSection.classList.remove('hidden');
-    renderChapters(state.subjectKey);
-  } else if (state.view === 'video' && state.subjectKey && state.videoLink) {
-    subjectContainer.classList.add('hidden');
-    chapterSection.classList.remove('hidden');
-    renderChapters(state.subjectKey);
-    const embed = getYouTubeEmbedUrl(state.videoLink);
-    ytPlayer.src = embed;
-    videoFrame.classList.remove('hidden');
-    currentVideoLink = state.videoLink;
-  } else if (state.view === 'subjects') {
-    goToSubjectList();
+  if (!state) { renderDashboard(); return; }
+  if (state.view === 'topics' && state.subjectKey) {
+    renderTopicsList(state.subjectKey);
+  } else if (state.view === 'video' && state.subjectKey && state.link) {
+    renderVideoScreen(state.subjectKey, state.chapterIdx, state.link, state.title);
   } else {
-    goToSubjectList();
+    renderDashboard();
   }
 });
 
-// attach subject card clicks
-document.querySelectorAll('.subject-card').forEach(card => {
-  card.addEventListener('click', (e) => {
-    const subjKey = card.getAttribute('data-subj');
-    if (subjects[subjKey]) showSubjectUI(subjKey);
-  });
-});
-
-// UI back button triggers browser back (seamless for Windows & mobile)
-document.getElementById('nav-back-btn').addEventListener('click', () => {
-  if (!videoFrame.classList.contains('hidden')) {
-    closeVideo();
-    history.back();
-  } else if (!chapterSection.classList.contains('hidden')) {
-    history.back();
-  } else {
-    history.back();
-  }
-});
-
-// initial state
-goToSubjectList();
-if (window.location.hash.includes('subject')) history.replaceState({ view: 'subjects' }, '', ' ');
+// Initialize
+renderDashboard();
+history.replaceState({ view: 'dashboard' }, '');
