@@ -1,6 +1,6 @@
 // ------------------------------------------------------------------
-// HSC STUDY HUB - COMPLETE DATA & LOGIC
-// Back button support (Windows/Mobile), YouTube embed fix, auto-scroll
+// HSC STUDY HUB — COMPLETE DATA & LOGIC
+// Back button support (Windows/Mobile), YouTube embed fix, direct links
 // ------------------------------------------------------------------
 
 const subjects = {
@@ -114,13 +114,15 @@ const subjects = {
   ] }
 };
 
-// ---------- Helper: YouTube embed fix (playlists, videos, shorts, live) ----------
+// ---------- YouTube embed helper (fixed: handles all formats) ----------
 function getYouTubeEmbedUrl(link) {
   if (!link) return "";
-  if (link.includes("playlist?list=")) {
+  // Playlist
+  if (link.includes("playlist?list=") || link.includes("&list=")) {
     const match = link.match(/[&?]list=([^&]+)/);
     if (match) return `https://www.youtube.com/embed/videoseries?list=${match[1]}`;
   }
+  // Single video
   let videoId = null;
   const patterns = [
     /youtu\.be\/([^?&]+)/,
@@ -184,11 +186,16 @@ function renderVideoScreen(subjectKey, chapterIdx, link, title) {
   const subject = subjects[subjectKey];
   const embedUrl = getYouTubeEmbedUrl(link);
   const allChapters = subject.chapters.map((ch, idx) => ({ title: ch.title, link: ch.link, idx }));
-  
+
   let html = `<button class="back-btn" id="backBtnVideo"><i class="fas fa-arrow-left"></i> Back</button>
     <div class="video-learning-layout">
       <div class="video-main">
         <div id="dynamicPlayerArea"><div class="video-wrapper"><iframe src="${embedUrl}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div></div>
+        <div class="direct-link-wrapper">
+          <i class="fab fa-youtube"></i>
+          <span style="font-weight:500;color:var(--text-muted);">ভিডিওটি ব্রাউজারে না চললে সরাসরি দেখুন:</span>
+          <a href="${link}" target="_blank" rel="noopener noreferrer"><i class="fas fa-external-link-alt"></i> ${escapeHtml(link)}</a>
+        </div>
         <div class="pdf-actions"><button class="pdf-btn" id="backToTopicsBtn"><i class="fas fa-list-ul"></i> Back to Chapters</button></div>
       </div>
       <div class="playlist-side">
@@ -197,7 +204,7 @@ function renderVideoScreen(subjectKey, chapterIdx, link, title) {
       </div>
     </div>`;
   contentArea.innerHTML = html;
-  
+
   const playlistContainer = document.getElementById('playlistContainer');
   allChapters.forEach(ch => {
     const div = document.createElement('div');
@@ -206,7 +213,7 @@ function renderVideoScreen(subjectKey, chapterIdx, link, title) {
     div.addEventListener('click', () => openVideo(subjectKey, ch.idx, ch.link, ch.title));
     playlistContainer.appendChild(div);
   });
-  
+
   document.getElementById('backBtnVideo').addEventListener('click', () => history.back());
   document.getElementById('backToTopicsBtn').addEventListener('click', () => {
     history.pushState({ view: 'topics', subjectKey }, '');
@@ -224,9 +231,9 @@ function renderTopicsList(subjectKey) {
   dashboardMain.style.display = 'none';
   globalProgressDiv.style.display = 'block';
   updateProgressBar(subjectKey);
-  
+
   let topicsHtml = `<button class="back-btn" id="backBtnNav"><i class="fas fa-arrow-left"></i> Back to Subjects</button>
-    <h2 style="margin-bottom: 20px;"><i class="${subject.icon}"></i> ${subject.name} · অধ্যায় সমূহ</h2>
+    <h2 style="margin-bottom: 20px;"><i class="${subject.icon}"></i> ${subject.name} · অধ্যায় সমূহ</h2>
     <div class="topics-list" id="topicsContainer">`;
   subject.chapters.forEach((ch, idx) => {
     const isRead = JSON.parse(localStorage.getItem(`read_${subjectKey}`))?.includes(idx) || false;
@@ -237,7 +244,7 @@ function renderTopicsList(subjectKey) {
   });
   topicsHtml += `</div>`;
   contentArea.innerHTML = topicsHtml;
-  
+
   document.querySelectorAll('.topic-item').forEach(item => {
     const chapterIdx = item.getAttribute('data-chapter-index');
     const link = item.getAttribute('data-chapter-link');
@@ -268,7 +275,7 @@ function renderDashboard() {
     const card = document.createElement('div');
     card.className = 'option-card';
     card.setAttribute('data-subj', key);
-    card.innerHTML = `<i class="${sub.icon}"></i><h3>${sub.name}</h3><p>${sub.chapters.length} টি অধ্যায়</p>`;
+    card.innerHTML = `<i class="${sub.icon}"></i><h3>${sub.name}</h3><p>${sub.chapters.length} টি অধ্যায়</p>`;
     card.addEventListener('click', () => {
       history.pushState({ view: 'topics', subjectKey: key }, '');
       renderTopicsList(key);
